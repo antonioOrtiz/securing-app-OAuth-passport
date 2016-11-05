@@ -5,6 +5,8 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
+    session = require('express-session'),
+
     routes = require('./routes/index'),
     users = require('./routes/users'),
 
@@ -27,6 +29,20 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// setting up passport middlware
+app.use(session({secret: 'anything'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeuser(function(user, done) {
+    done(null,  user);
+});
+
+passport.deserializeuser(function(userId, done) {
+    done(null,  user);
+});
+
 
 app.use('/', routes);
 app.use('/users', users);
