@@ -10,7 +10,8 @@ var express = require('express'),
     routes = require('./routes/index'),
     users = require('./routes/users'),
 
-    app = express();
+    app = express(),
+    GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
