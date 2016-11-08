@@ -13,6 +13,15 @@ var express = require('express'),
     app = express(),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+passport.use(new GoogleStrategy({
+    clientID: '293438468938-o2jagsb63bbf4hjs6mrvlh80rcrsi1s6.apps.googleusercontent.com',
+    clientSecret: '_5xCypVGHNPyV16lhz6C2n70',
+    callbackURL: 'http://localhost:3000/auth/google/callback',
+    function(req, accessToken, refreshToken, profile, done){
+      done(null, profile);
+    }
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,24 +32,28 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   indentedSyntax: true,
   sourceMap: true
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setting up passport middlware
 app.use(session({secret: 'anything'}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeuser(function(user, done) {
+passport.serializeUser(function(user, done) {
     done(null,  user);
 });
 
-passport.deserializeuser(function(userId, done) {
+passport.deserializeUser(function(user, done) {
+    
     done(null,  user);
 });
 
