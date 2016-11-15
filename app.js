@@ -15,13 +15,15 @@ var express = require('express'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.use(new GoogleStrategy({
-    clientID: '293438468938-o2jagsb63bbf4hjs6mrvlh80rcrsi1s6.apps.googleusercontent.com',
-    clientSecret: '_5xCypVGHNPyV16lhz6C2n70',
-    callbackURL: 'http://localhost:3000/auth/google/callback',
+    clientID: '28540992152-8ec10ajum8fobgsgubfdgqupgctb747d.apps.googleusercontent.com',
+    clientSecret: 'pebfG-9OQ2r1Jj1pbeVYfu02',
+    callbackURL: 'http://localhost:3000/auth/google/callback'},
     function(req, accessToken, refreshToken, profile, done){
       done(null, profile);
     }
-}));
+));
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -61,7 +63,7 @@ passport.deserializeUser(function(user, done) {
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/auth', users);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
