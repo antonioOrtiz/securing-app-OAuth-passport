@@ -9,7 +9,7 @@ router.use('/', function(req, res, next){
 });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.render('users', {
         user: { 
             name: req.user.displayName, 
@@ -17,4 +17,5 @@ router.get('/', function(req, res, next) {
         }
     });
 });
+
 module.exports = router;
