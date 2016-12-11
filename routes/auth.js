@@ -12,8 +12,10 @@ router.route('/google/callback')
 router.route('/google')
     .get(passport.authenticate('google', {
         scope: ['https://www.googleapis.com/auth/userinfo.profile',
-            'https://www.googleapis.com/auth/userinfo.email']
-    }));
+            'https://www.googleapis.com/auth/userinfo.email'
+        ]
+    }))
+
 router.route('/twitter/callback')
     .get(passport.authenticate('twitter', {
         successRedirect: '/users/',
@@ -21,16 +23,30 @@ router.route('/twitter/callback')
     }));
 
 router.route('/twitter')
-    .get(passport.authenticate('twitter'));
+    .get(passport.authenticate('twitter'))
 
 
-// router.route('/facebook')
-//     .get(passport.authenticate('facebook', {
-//         scope: ['email']
-//     }));
-// router.route('/facebook/callback')
-//     .get(passport.authenticate('facebook', {
-//         successRedirect: '/users',
-//         failureRedirect: '/error'
-//     }));
+router.route('/facebook')
+    .get(passport.authenticate('facebook', {
+        scope: ['email']
+    }));
+
+router.route('/facebook/callback')
+    .get(passport.authenticate('facebook', {
+        successRedirect: '/users',
+        failureRedirect: '/error'
+    }));
+
+router.route('/linkedin')
+    .get(passport.authenticate('linkedin'));
+
+router.route('/linkedin/callback')
+    .get(passport.authenticate('linkedin', {
+        successRedirect: '/users/',
+        failure: '/error/'
+    }));
+
+
+
+
 module.exports = router;
