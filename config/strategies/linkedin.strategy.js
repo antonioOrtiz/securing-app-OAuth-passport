@@ -9,12 +9,15 @@ module.exports = function() {
             consumerSecret: 'ajTJfuNTxLnDGlCK',
             callbackURL: 'http://localhost:3000/auth/linkedin/callback',
         },
-        function(token, tokenSecret, profile, done) {
+  function(token, tokenSecret, profile, done) {
+           var user = {};
+            // user.email = profile.emails[0].value;
+            // user.image = profile._json.image.url;
+            user.displayName = profile.displayName;
 
-            User.findOrCreate({ linkedinId: profile.id }, function(err, user) {
-                return done(err, user);
-            });
-
+            user.linkedin = {};
+            user.linkedin.id = profile.id;
+            user.linkedin.token = tokenSecret;
             done(null, user);
         }));
 
