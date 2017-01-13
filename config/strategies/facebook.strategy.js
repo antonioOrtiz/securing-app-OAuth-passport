@@ -9,7 +9,7 @@ module.exports = function() {
             clientSecret: '2152eb7f3d686459fe5d5224d1f9abc8',
             callbackURL: 'http://localhost:3000/auth/facebook/callback',
             passReqToCallback: true,
-            profileFields: ['id', 'email', 'name', 'displayName'] // HERE!
+            profileFields: ['emails', 'displayName', 'id']
 
         },
         function(req, accessToken, refreshToken, profile, done) {
@@ -17,7 +17,7 @@ module.exports = function() {
             var user = {};
 
             user.email = profile.emails[0].value;
-            user.image = profile._json.image.url;
+            // user.image = profile._json.image.url;
             user.displayName = profile.displayName;
 
             user.facebook = {};
