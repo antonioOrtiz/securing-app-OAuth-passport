@@ -46,6 +46,7 @@ router.route('/linkedin/callback')
         failureRedirect: '/error'
     }));
 
+
 router.route('/github')
     .get(passport.authenticate('github'));
 

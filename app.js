@@ -6,12 +6,14 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
     session = require('express-session'),
+    mongoose = require('mongoose'),
 
     routes = require('./routes/index'),
     users = require('./routes/users'),
     auth = require('./routes/auth'),
 
-    app = express();
+    app = express(),
+    db = mongoose.connect('mongodb://localhost/socialAgg');
 
 
 app.use(require('node-sass-middleware')({
