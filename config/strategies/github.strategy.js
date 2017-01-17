@@ -1,5 +1,7 @@
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
+var User = require('../../models/userModel');
+
 
 
 module.exports = function() {
@@ -9,16 +11,29 @@ module.exports = function() {
             clientSecret: 'ef32ef8b5dcc6249b587d91de2a632a753c388e8',
             callbackURL: 'http://localhost:3000/auth/github/callback',
         },
-  function(token, tokenSecret, profile, done) {
-           var user = {};
-            // user.email = profile.emails[0].value;
-            // user.image = profile._json.image.url;
-            user.displayName = profile.displayName;
+        function(req, accessToken, refreshToken, profile, done) {
+            var query = {
+                'github.id': profile.id
+            };
 
-            user.github = {};
-            user.github.id = profile.id;
-            user.github.token = tokenSecret;
-            done(null, user);
+            User.findOne(query, function(error, user) {
+                if (user) {
+                    console.log('found');
+                    done(null, user);
+                } else {
+                    console.log('not found');
+                    var user = new User;
+                       user.image = profile._json.image.url;
+                    user.displayName = profile.displayName;
+
+
+                    user.github = {};
+                    user.github.id = profile.id;
+                    user.github.token = accessToken;
+                    user.save();
+                    done(null, user);
+                }
+            });
         }));
 
 };
