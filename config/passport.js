@@ -19,6 +19,8 @@ module.exports = function(app) {
     require('./strategies/facebook.strategy')();
     require('./strategies/linkedin.strategy')();
     require('./strategies/github.strategy')();
+    require('./strategies/instagram.strategy')();
+
 
 
 };
