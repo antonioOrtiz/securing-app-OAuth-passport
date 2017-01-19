@@ -37,10 +37,10 @@ router.route('/facebook/callback')
         failureRedirect: '/error'
     }));
 
-router.route('/linkedin')
+router.route('/auth/linkedin')
     .get(passport.authenticate('linkedin'));
 
-router.route('/linkedin/callback')
+router.route('/auth/linkedin/callback')
     .get(passport.authenticate('linkedin', {
         successRedirect: '/users',
         failureRedirect: '/error'
@@ -52,6 +52,15 @@ router.route('/github')
 
 router.route('/github/callback')
     .get(passport.authenticate('github', {
+        successRedirect: '/users',
+        failureRedirect: '/error'
+    }));
+
+router.route('/instagram')
+    .get(passport.authenticate('instagram'));
+
+router.route('/instagram/callback')
+    .get(passport.authenticate('instagram', {
         successRedirect: '/users',
         failureRedirect: '/error'
     }));
