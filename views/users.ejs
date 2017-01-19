@@ -12,7 +12,10 @@
     <body>
         <div>
          <img src="<%=user.image%>">
-          <%=user.name%>    
+          <%=user.name%>
+          <%if(user.facebook){%>
+            <img src="<%=user.facebook.image%>">
+          <%}%>
         </div>
         <div>
             <ul class="social list-inline">
@@ -26,6 +29,8 @@
                  <a href="/auth/linkedin" class="<%if(user.linkedin){%>linkedin<%}%>"><i class="fa fa-linkedin"></i>
                 </a>
                 <a href="/auth/github" class="<%if(user.github){%>github<%}%>"><i class="fa fa-github"></i>
+                </a>
+                   <a href="/auth/instagram" class="<%if(user.instagram){%>instagram<%}%>"><i class="fa fa-instagram"></i>
                 </a>
             </li>
         </ul>
