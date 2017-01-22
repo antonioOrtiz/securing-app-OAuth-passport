@@ -16,8 +16,10 @@ router.get('/', function(req, res) {
         facebook.getImage(req.user.facebook.token, 
             function (results) {
                 req.user.facebook.image = results.url;
-                facebook.getFriends(req.user.facebook.token, function(results){
-                res.render('users', {user: req.user});
+                facebook.getFriends(req.user.facebook.token, 
+                    function(results){
+                        req.user.facebook.friends = results.total_count;
+                        res.render('users', {user: req.user});
                 });       
             });
     } else {
