@@ -22,9 +22,20 @@ var Facebook = function (facebookKey, facebookSecret) {
                 }
             );
         };
+        var getFriends = function (userKey, done) {
+            /* body... */
+            oauth.get('https://graph.facebook.com/v2.8/me/friends?redirect=false',
+                userKey,
+                function(err, results, res){
+                    results = JSON.parse(results);
+                    done(results.summary);
+                }
+            );
+        };
         return {
-            getImage : getImage
-        }
+            getImage : getImage,
+            getFriends : getFriends
+        };
 };
 
 
