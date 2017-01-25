@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Oauth-passport-securing-app</title>
-        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/stylesheets/style.css">
-        <script src="/lib/jquery/dist/jquery.js"></script>
-        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
-    </head>
-    <body>
-        <div>
-         <img src="<%=user.image%>">
-          <%=user.displayName%>
-          <%if(user.facebook){%>
-            <img src="<%=user.facebook.image%>">
-          <%}%>
+  <head>
+    <meta charset="UTF-8">
+    <title>Oauth-passport-securing-app</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+  </head>
+  <body>
+  <div>
+        <img src="<%=user.image%>">
+        <%if(user.facebook){%>
+        <img src="<%=user.facebook.image%>">
+        <%}%>
           I have <%=user.facebook.friends%> friends
-        </div>
-        <div>
-            <ul class="social list-inline">
-            <li>
-                <a href="/auth/google" class="<%if(user.google){%>googleplus<%}%>"><i class="fa fa-google-plus"></i>
-                </a>
-                <a href="/auth/twitter" class="<%if(user.twitter){%>twitter<%}%>"><i class="fa fa-twitter"></i>
-                </a>
-                 <a href="/auth/facebook" class="<%if(user.facebook){%>facebook<%}%>"><i class="fa fa-facebook"></i>
-                </a>
-                 <a href="/auth/linkedin" class="<%if(user.linkedin){%>linkedin<%}%>"><i class="fa fa-linkedin"></i>
-                </a>
-                <a href="/auth/github" class="<%if(user.github){%>github<%}%>"><i class="fa fa-github"></i>
-                </a>
-                   <a href="/auth/instagram" class="<%if(user.instagram){%>instagram<%}%>"><i class="fa fa-instagram"></i>
-                </a>
-            </li>
-        </ul>
-        </div>
-        
-    </body>
+        <%=user.displayName%>
+        <%=user.twitter.lastPost%>
+    </div>
+   
+      <ul class="social list-inline">
+        <li>
+          <a href="/auth/google" class="<%if(user.google){%>googleplus<%}%>"><i class="fa fa-google-plus"></i>
+          </a>
+          <a href="/auth/twitter" class="<%if(user.twitter){%>twitter<%}%>"><i class="fa fa-twitter"></i>
+          </a>
+          <a href="/auth/facebook" class="<%if(user.facebook){%>facebook<%}%>"><i class="fa fa-facebook"></i>
+          </a>
+          <a href="/auth/linkedin" class="<%if(user.linkedin){%>linkedin<%}%>"><i class="fa fa-linkedin"></i>
+          </a>
+          <a href="/auth/github" class="<%if(user.github){%>github<%}%>"><i class="fa fa-github"></i>
+          </a>
+          <a href="/auth/instagram" class="<%if(user.instagram){%>instagram<%}%>"><i class="fa fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+  </body>
 </html>
