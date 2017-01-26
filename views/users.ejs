@@ -11,11 +11,10 @@
   </head>
   <body>
   <div>
-        <img src="<%=user.image%>">
+       <img src="<%=user.image%>">
         <%if(user.facebook){%>
         <img src="<%=user.facebook.image%>">
         <%}%>
-          I have <%=user.facebook.friends%> friends
         <%=user.displayName%>
         <%=user.twitter.lastPost%>
     </div>
