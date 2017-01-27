@@ -37,10 +37,10 @@ router.route('/facebook/callback')
         failureRedirect: '/error'
     }));
 
-router.route('/auth/linkedin')
+router.route('/linkedin')
     .get(passport.authenticate('linkedin'));
 
-router.route('/auth/linkedin/callback')
+router.route('/linkedin/callback')
     .get(passport.authenticate('linkedin', {
         successRedirect: '/users',
         failureRedirect: '/error'
